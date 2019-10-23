@@ -75,8 +75,8 @@ def gameData(url):
     return data
 
 def timeArvo(time): # Kellonaika vertailtavassa muodossa
-    if time > 15:
-        if time > 18:
+    if time >= 15:
+        if time >= 18:
             return 2
         else:
             return 1
@@ -89,7 +89,7 @@ def dateArvo(date):
     "oct", "nov", "dec"]
 
     year = int(date[2][2:])
-    month = int(months.index(date[1].lower()))
+    month = int(months.index(date[1].lower())+1)
     weekday = datetime.datetime(int("20"+str(year)), month+1, int(date[0])).weekday()
     realdate = "20"+str(year)+"-"+str(month+1)+"-"+str(int(date[0]))
     return [year, month, weekday, realdate]
